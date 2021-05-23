@@ -13,7 +13,7 @@ data class FilterMatchState(
     val distanceInKm: FilterDistance = FilterDistance.defaultFilterDistance,
 
     val event: Event = Event.TappedReset,
-    val effect: Effect? = Effect.SubmitRequest,
+    val effect: Effect? = null,
 
     val matches: List<Match>? = null,
 
@@ -31,7 +31,6 @@ data class FilterMatchState(
                 compatibility = Range.defaultCompatibilityRange,
                 ageRange = Range.defaultAgeRange,
                 heightRange = Range.defaultHeightRange,
-                distanceInKm = FilterDistance.defaultFilterDistance,
                 effect = null,
                 matches = null,
                 inProgress = true
@@ -55,7 +54,7 @@ data class FilterMatchState(
             is Event.UpdatedHeightRange -> copy(event = e, heightRange = e.value)
             is Event.UpdatedDistanceInKmLocation -> {
                 val distance = distanceInKm.copy(location = e.value)
-                copy(event = e, distanceInKm = distance)
+                copy(event = e, distanceInKm = distance, effect = Effect.SubmitRequest)
             }
             is Event.UpdatedDistanceInKmRange -> {
                 val distance = distanceInKm.copy(range = e.value)

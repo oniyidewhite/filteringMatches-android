@@ -20,4 +20,7 @@
     <string name="label_has_photo">Has photo</string>
     <string name="label_reset">Reset</string>
     <string name="label_apply">Apply</string>
+    <string name="label_ok">Ok</string>
+    <string name="label_permission">Permission request</string>
+    <string name="user_location_required">We use your device location to get your match around</string>
 </resources>
