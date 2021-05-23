@@ -26,15 +26,15 @@ class MatchListViewModel
             when (effect) {
                 is Effect.SubmitRequest -> withState {
                     loadContent(it.toFilter())
-                    handledEffect()
+                    postEvent(Event.HandledEffect)
                 }
                 else -> Unit
             }
         }
     }
 
-    fun loadMatches() {
-        setState { reduce(Event.TappedFind) }
+    fun postEvent(event: Event) {
+        setState { reduce(event) }
     }
 
     private fun loadContent(filter: Filter) {
@@ -49,10 +49,6 @@ class MatchListViewModel
                 else -> this
             }
         }
-    }
-
-    fun handledEffect() {
-        setState { reduce(Event.HandledEffect) }
     }
 
     @AssistedFactory

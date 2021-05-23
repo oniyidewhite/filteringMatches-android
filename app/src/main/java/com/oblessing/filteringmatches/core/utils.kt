@@ -7,6 +7,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.target.ImageViewTarget
 import com.bumptech.glide.request.transition.DrawableCrossFadeFactory
+import com.bumptech.glide.signature.ObjectKey
 import com.oblessing.filteringmatches.BuildConfig
 
 
@@ -15,6 +16,7 @@ private val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(tru
 fun ImageView.loadUrl(string: String) {
     Glide.with(context)
         .asGif()
+        .signature(ObjectKey(System.currentTimeMillis() / 24*60*60*1000))
         .transition(DrawableTransitionOptions.withCrossFade(factory))
         .diskCacheStrategy(DiskCacheStrategy.NONE)
         .load(string)

@@ -1,6 +1,5 @@
 package com.oblessing.filteringmatches.states
 
-import com.oblessing.filteringmatches.models.FilterDistance
 import com.oblessing.filteringmatches.models.LatLng
 import com.oblessing.filteringmatches.models.Match
 import com.oblessing.filteringmatches.models.Range
@@ -25,7 +24,8 @@ class FilterMatchStateTest {
             .reduce(Event.UpdatedAgeRange(Range(10, 99)))
             .reduce(Event.UpdatedCompatibility(Range(80, 90)))
             .reduce(Event.UpdatedHeightRange(Range(10, 30)))
-            .reduce(Event.UpdatedDistanceInKm(FilterDistance(LatLng(0.0, -1.0), Range(100, 1000))))
+            .reduce(Event.UpdatedDistanceInKmRange(Range(100, 1000)))
+            .reduce(Event.UpdatedDistanceInKmLocation(LatLng(0.0, -1.0)))
 
         assert(!state.hasPhoto)
         assert(!state.inContact)

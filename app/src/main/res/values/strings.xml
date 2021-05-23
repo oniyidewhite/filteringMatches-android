@@ -7,4 +7,17 @@
     <string name="label_retry">Retry</string>
     <string name="label_no_content">No content</string>
     <string name="label_no_content_description">Please adjust your filter preference to get matches</string>
+    <string name="label_close">Close</string>
+    <string name="label_filter_options">Filter Options</string>
+    <string name="label_age_range">Age range</string>
+    <string name="label_compatibility_range">Compatibility range</string>
+    <string name="label_height_range">Height range</string>
+    <string name="label_distance_range">Distance range</string>
+    <string name="label_favourite">Favourite</string>
+    <string name="label_yes">Yes</string>
+    <string name="label_no">No</string>
+    <string name="label_in_contact">In contact</string>
+    <string name="label_has_photo">Has photo</string>
+    <string name="label_reset">Reset</string>
+    <string name="label_apply">Apply</string>
 </resources>

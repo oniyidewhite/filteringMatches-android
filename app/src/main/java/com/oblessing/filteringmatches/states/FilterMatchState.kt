@@ -1,10 +1,7 @@
 package com.oblessing.filteringmatches.states
 
 import com.airbnb.mvrx.MavericksState
-import com.oblessing.filteringmatches.models.Filter
-import com.oblessing.filteringmatches.models.FilterDistance
-import com.oblessing.filteringmatches.models.Match
-import com.oblessing.filteringmatches.models.Range
+import com.oblessing.filteringmatches.models.*
 
 data class FilterMatchState(
     val hasPhoto: Boolean = true,
@@ -12,7 +9,7 @@ data class FilterMatchState(
     val favourite: Boolean = false,
     val compatibility: Range = Range.defaultCompatibilityRange,
     val ageRange: Range = Range.defaultAgeRange,
-    val heightRange: Range = Range.defaultHeightAgeRange,
+    val heightRange: Range = Range.defaultHeightRange,
     val distanceInKm: FilterDistance = FilterDistance.defaultFilterDistance,
 
     val event: Event = Event.TappedReset,
@@ -33,9 +30,9 @@ data class FilterMatchState(
                 favourite = false,
                 compatibility = Range.defaultCompatibilityRange,
                 ageRange = Range.defaultAgeRange,
-                heightRange = Range.defaultHeightAgeRange,
+                heightRange = Range.defaultHeightRange,
                 distanceInKm = FilterDistance.defaultFilterDistance,
-                effect = Effect.SubmitRequest,
+                effect = null,
                 matches = null,
                 inProgress = true
             )
@@ -56,13 +53,28 @@ data class FilterMatchState(
             is Event.UpdatedCompatibility -> copy(event = e, compatibility = e.value)
             is Event.UpdatedAgeRange -> copy(event = e, ageRange = e.value)
             is Event.UpdatedHeightRange -> copy(event = e, heightRange = e.value)
-            is Event.UpdatedDistanceInKm -> copy(event = e, distanceInKm = e.value)
+            is Event.UpdatedDistanceInKmLocation -> {
+                val distance = distanceInKm.copy(location = e.value)
+                copy(event = e, distanceInKm = distance)
+            }
+            is Event.UpdatedDistanceInKmRange -> {
+                val distance = distanceInKm.copy(range = e.value)
+                copy(event = e, distanceInKm = distance)
+            }
             is Event.UpdatedFavourite -> copy(event = e, favourite = e.value)
         }
     }
 
     fun toFilter(): Filter {
-        return Filter(hasPhoto, inContact, favourite, compatibility, ageRange, heightRange, distanceInKm)
+        return Filter(
+            hasPhoto,
+            inContact,
+            favourite,
+            compatibility,
+            ageRange,
+            heightRange,
+            distanceInKm
+        )
     }
 
 
@@ -81,7 +93,9 @@ data class FilterMatchState(
         data class UpdatedCompatibility(val value: Range) : Event()
         data class UpdatedAgeRange(val value: Range) : Event()
         data class UpdatedHeightRange(val value: Range) : Event()
-        data class UpdatedDistanceInKm(val value: FilterDistance) : Event()
+
+        data class UpdatedDistanceInKmRange(val value: Range) : Event()
+        data class UpdatedDistanceInKmLocation(val value: LatLng) : Event()
     }
 
     sealed class Effect {

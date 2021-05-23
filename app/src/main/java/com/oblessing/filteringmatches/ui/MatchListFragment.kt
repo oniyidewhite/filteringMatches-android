@@ -12,6 +12,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.oblessing.filteringmatches.R
 import com.oblessing.filteringmatches.core.mavericks.viewBinding
 import com.oblessing.filteringmatches.databinding.FragmentMatchListBinding
+import com.oblessing.filteringmatches.states.FilterMatchState.Event
 import com.oblessing.filteringmatches.states.FilterMatchState
 import com.oblessing.filteringmatches.views.matchRow
 import com.oblessing.filteringmatches.views.noContentRow
@@ -37,7 +38,7 @@ class MatchListFragment : Fragment(R.layout.fragment_match_list), MavericksView 
             when (effect) {
                 FilterMatchState.Effect.ShowError -> {
                     showError()
-                    viewModel.handledEffect()
+                    postEvent(Event.HandledEffect)
                 }
                 else -> {
                     // Do nothing
@@ -76,12 +77,11 @@ class MatchListFragment : Fragment(R.layout.fragment_match_list), MavericksView 
     private fun showError() {
         Snackbar.make(binding.root, R.string.unexpected_error, Snackbar.LENGTH_INDEFINITE)
             .setAction(R.string.label_retry) {
-                fetchMatches()
+                postEvent(Event.TappedFind)
             }.show()
     }
 
-    private fun fetchMatches() {
-        // load content
-        viewModel.loadMatches()
+    private fun postEvent(event: Event) {
+        viewModel.postEvent(event)
     }
 }
