@@ -32,8 +32,10 @@ class FilterMatchStateTest {
         assert(state.ageRange.from == 10 && state.ageRange.to == 99)
         assert(state.compatibility.from == 80 && state.compatibility.to == 90)
         assert(state.heightRange.from == 10 && state.heightRange.to == 30)
-        assert(state.distanceInKm.location.lat == 0.0 && state.distanceInKm.location.lng == -1.0 &&
-                state.distanceInKm.range.from == 100 && state.distanceInKm.range.to == 1000)
+        assert(
+            state.distanceInKm.location.lat == 0.0 && state.distanceInKm.location.lng == -1.0 &&
+                    state.distanceInKm.range.from == 100 && state.distanceInKm.range.to == 1000
+        )
     }
 
     @Test
@@ -56,7 +58,18 @@ class FilterMatchStateTest {
 
     @Test
     fun `matches should not be empty and show progress should not be false on successful response`() {
-        val match = Match("test")
+        val match = Match(
+            displayName = "test",
+            age = "20yr",
+            height = "175cm",
+            imageUrl = "",
+            jobTitle = "n/a",
+            favourite = false,
+            inContact = false,
+            city = "tmp",
+            distance = "10km",
+            score = 0.9
+        )
         val state = FilterMatchState()
             .reduce(Event.TappedFind)
             .reduce(Event.LoadedMatches(listOf(match)))

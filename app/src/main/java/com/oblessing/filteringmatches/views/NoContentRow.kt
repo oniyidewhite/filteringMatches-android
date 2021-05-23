@@ -2,17 +2,18 @@ package com.oblessing.filteringmatches.views
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.airbnb.epoxy.ModelView
-import com.oblessing.filteringmatches.core.mavericks.viewBinding
-import com.oblessing.filteringmatches.databinding.RowMatchBinding
-import com.oblessing.filteringmatches.databinding.RowNoContentBinding
+import com.oblessing.filteringmatches.R
 
-@ModelView(autoLayout = ModelView.Size.WRAP_WIDTH_WRAP_HEIGHT)
+@ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class NoContentRow @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : FrameLayout(context, attributeSet, defStyleAttr) {
-    private val binding: RowNoContentBinding by viewBinding()
+    init {
+        LayoutInflater.from(context).inflate(R.layout.row_no_content, this, true)
+    }
 }

@@ -1,0 +1,16 @@
+query FindMatch($input:InputFilter!) {
+    matches(input: $input) {
+        displayName
+        age
+        jobTitle
+        distance
+        mainPhoto
+        contactsExchanged
+        city {
+            name
+        }
+        favourite
+        heightInCm
+        compatibilityScore
+    }
+}

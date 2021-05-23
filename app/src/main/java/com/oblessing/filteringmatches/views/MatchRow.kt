@@ -3,6 +3,7 @@ package com.oblessing.filteringmatches.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import androidx.core.content.ContextCompat
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import com.oblessing.filteringmatches.R
@@ -28,6 +29,12 @@ class MatchRow @JvmOverloads constructor(
         binding.jobTitle.text = match.jobTitle
         binding.height.text = match.height
         binding.distance.text = match.distance
+        binding.favorite.setColorFilter(
+            ContextCompat.getColor(
+                context,
+                if (match.favourite) R.color.red_200 else R.color.colorLightGrey
+            )
+        )
         binding.contactsExchanged.text = if (match.inContact) {
             context.getString(R.string.in_contact)
         } else {

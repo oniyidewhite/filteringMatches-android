@@ -35,8 +35,10 @@ class MatchListFragment : Fragment(R.layout.fragment_match_list), MavericksView 
 
             // check if we need to display any errors
             when (effect) {
-                FilterMatchState.Effect.ShowError -> showError()
-                FilterMatchState.Effect.SubmitRequest -> fetchMatches()
+                FilterMatchState.Effect.ShowError -> {
+                    showError()
+                    viewModel.handledEffect()
+                }
                 else -> {
                     // Do nothing
                 }
@@ -75,7 +77,7 @@ class MatchListFragment : Fragment(R.layout.fragment_match_list), MavericksView 
         Snackbar.make(binding.root, R.string.unexpected_error, Snackbar.LENGTH_INDEFINITE)
             .setAction(R.string.label_retry) {
                 fetchMatches()
-            }
+            }.show()
     }
 
     private fun fetchMatches() {

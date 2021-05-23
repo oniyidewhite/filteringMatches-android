@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
-    id("com.apollographql.apollo").version("2.5.7")
+    id "com.apollographql.apollo"
 }
 
 android {
@@ -38,6 +38,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    apollo {
+        // instruct the compiler to generate Kotlin models
+        generateKotlinModels.set(true)
     }
 }
 
