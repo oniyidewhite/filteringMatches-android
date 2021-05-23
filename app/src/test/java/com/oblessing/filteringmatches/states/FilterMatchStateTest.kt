@@ -1,6 +1,9 @@
 package com.oblessing.filteringmatches.states
 
+import com.oblessing.filteringmatches.models.FilterDistance
+import com.oblessing.filteringmatches.models.LatLng
 import com.oblessing.filteringmatches.models.Match
+import com.oblessing.filteringmatches.models.Range
 import org.junit.Test
 import com.oblessing.filteringmatches.states.FilterMatchState.Event
 import com.oblessing.filteringmatches.states.FilterMatchState.Effect

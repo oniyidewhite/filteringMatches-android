@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/matchListFragment">
+
+    <fragment
+        android:id="@+id/matchListFragment"
+        android:name="com.oblessing.filteringmatches.ui.MatchListFragment"
+        android:label="MatchListFragment" >
+        <action
+            android:id="@+id/action_matchListFragment_to_matchPrefFragment"
+            app:destination="@id/matchPrefFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchPrefFragment"
+        android:name="com.oblessing.filteringmatches.ui.MatchPrefFragment"
+        android:label="MatchPrefFragment" />
+</navigation>

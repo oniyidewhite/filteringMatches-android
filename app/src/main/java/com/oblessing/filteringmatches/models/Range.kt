@@ -1,4 +1,4 @@
-package com.oblessing.filteringmatches.states
+package com.oblessing.filteringmatches.models
 
 data class Range(val from: Int, val to: Int) {
     companion object {

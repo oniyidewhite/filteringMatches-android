@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FilteringMatches</string>
+    <string name="in_contact">In contact</string>
+    <string name="not_in_contact">Not in contact</string>
+    <string name="label_filter">Filter</string>
+    <string name="unexpected_error">An unexpected error occurred</string>
+    <string name="label_retry">Retry</string>
+    <string name="label_no_content">No content</string>
+    <string name="label_no_content_description">Please adjust your filter preference to get matches</string>
 </resources>

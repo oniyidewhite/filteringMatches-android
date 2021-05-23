@@ -1,4 +1,4 @@
-package com.oblessing.filteringmatches.states
+package com.oblessing.filteringmatches.models
 
 data class LatLng(val lat: Double, val lng: Double) {
     companion object {

@@ -1,4 +1,4 @@
-package com.oblessing.filteringmatches.states
+package com.oblessing.filteringmatches.models
 
 data class FilterDistance(val location: LatLng, val range: Range) {
     companion object {

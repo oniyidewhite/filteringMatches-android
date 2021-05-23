@@ -1,7 +1,9 @@
 package com.oblessing.filteringmatches.states
 
 import com.airbnb.mvrx.MavericksState
+import com.oblessing.filteringmatches.models.FilterDistance
 import com.oblessing.filteringmatches.models.Match
+import com.oblessing.filteringmatches.models.Range
 
 data class FilterMatchState(
     val hasPhoto: Boolean = true,
