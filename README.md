@@ -18,6 +18,7 @@
 >- For lazy loading my image and caching using key, I went with glide. As it built to better handle this as it focuses on smooth scrolling
 >- App loads content after we get the user location or when the user applies updated search preference
 >- I added a sublte `No content view` incase user doesn't get a match based on their preference 
+>- I configured github actions to run both lint and test
 
 
 **Assumptions**
