@@ -34,7 +34,7 @@ class MatchListFragment : Fragment(R.layout.fragment_match_list), MavericksView 
     private val locationRequestLauncher: ActivityResultLauncher<String> by lazy {
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
-                saveUserLatLng()
+                fetchUserLocation()
             } else {
                 showLocationRequestInfoToUser()
             }
@@ -49,7 +49,7 @@ class MatchListFragment : Fragment(R.layout.fragment_match_list), MavericksView 
             ) == PackageManager.PERMISSION_GRANTED -> {
                 // You can use the API that requires the permission.
                 // save user location
-                saveUserLatLng()
+                fetchUserLocation()
             }
             shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_COARSE_LOCATION) -> showLocationRequestInfoToUser()
             else -> requestLocationAccess()
@@ -134,7 +134,7 @@ class MatchListFragment : Fragment(R.layout.fragment_match_list), MavericksView 
     }
 
     @SuppressLint("MissingPermission")
-    private fun saveUserLatLng() {
+    private fun fetchUserLocation() {
         LocationServices.getFusedLocationProviderClient(requireActivity()).lastLocation.addOnSuccessListener {
             val latLng = if (it != null) LatLng(it.latitude, it.longitude) else LatLng.defaultUserLocation
             postEvent(Event.UpdatedDistanceInKmLocation(latLng))

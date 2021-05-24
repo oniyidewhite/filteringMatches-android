@@ -16,12 +16,11 @@ import com.oblessing.filteringmatches.R
 
 private val factory = DrawableCrossFadeFactory.Builder().setCrossFadeEnabled(true).build()
 
-fun ImageView.loadUrl(string: String) {
+fun ImageView.loadUrl(string: String, key: String) {
     Glide.with(context)
         .asGif()
-        .signature(ObjectKey(System.currentTimeMillis() / 24*60*60*1000))
+        .signature(ObjectKey(key))
         .transition(DrawableTransitionOptions.withCrossFade(factory))
-        .diskCacheStrategy(DiskCacheStrategy.NONE)
         .load(string)
         .centerCrop()
         .into(object : ImageViewTarget<GifDrawable?>(this) {

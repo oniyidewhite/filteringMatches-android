@@ -22,7 +22,7 @@ class MatchRow @JvmOverloads constructor(
 
     @ModelProp
     fun setMatch(match: Match) {
-        binding.image.loadUrl(match.imageUrl)
+        binding.image.loadUrl(match.imageUrl, match.toString())
         binding.name.text = match.displayName
         binding.ageAndCity.text = "${match.age} - ${match.city}"
         binding.score.setRating(match.score)
